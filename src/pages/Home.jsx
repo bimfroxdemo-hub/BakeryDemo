@@ -24,7 +24,7 @@ const Home = () => {
   return (
     <div className="space-y-0">
       {/* Hero Section */}
-      <section className="relative h-[60vh] sm:h-[70vh] md:h-screen overflow-hidden flex items-center justify-center">
+      <section className="relative h-[50vh] sm:h-[70vh] md:h-screen overflow-hidden flex items-center justify-center">
         {/* Sliding wrapper */}
         <div
           className="flex transition-transform duration-1000 ease-in-out h-full"
