@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-motion
+
 const Header = () => {
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  motion
 
   const isActive = (path) => location.pathname === path;
 
@@ -54,7 +56,7 @@ const Header = () => {
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           scrolled
             ? "bg-white/90 backdrop-blur-md shadow-md"
-            : "bg-transparent"
+            : "bg-white/70 backdrop-blur-sm"
         }`}
       >
         <div className="container mx-auto px-6 py-4 flex items-center justify-between">
@@ -69,14 +71,14 @@ const Header = () => {
                   className={`text-xl font-extrabold transition-colors ${
                     scrolled
                       ? "text-gray-800 group-hover:text-orange-600"
-                      : "text-white group-hover:text-pink-200"
+                      : "text-gray-800 group-hover:text-orange-500"
                   }`}
                 >
                   Sweet Delights
                 </h1>
                 <p
                   className={`text-xs transition-colors ${
-                    scrolled ? "text-gray-500" : "text-gray-200"
+                    scrolled ? "text-gray-500" : "text-gray-600"
                   }`}
                 >
                   Bakery & Sweet Shop
@@ -99,13 +101,9 @@ const Header = () => {
                   to={link.path}
                   className={`relative text-sm font-medium transition-colors duration-300 ${
                     isActive(link.path)
-                      ? scrolled
-                        ? "text-orange-600"
-                        : "text-orange-300"
-                      : scrolled
-                      ? "text-gray-700"
-                      : "text-white"
-                  } hover:text-orange-500`}
+                      ? "text-orange-600"
+                      : "text-gray-700 hover:text-orange-500"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -134,7 +132,7 @@ const Header = () => {
               className={`md:hidden text-2xl transition ${
                 scrolled
                   ? "text-gray-700 hover:text-orange-600"
-                  : "text-white hover:text-yellow-300"
+                  : "text-gray-800 hover:text-orange-600"
               }`}
             >
               {isMobileMenuOpen ? <FaTimes /> : <FaBars />}
@@ -151,7 +149,7 @@ const Header = () => {
               animate="visible"
               exit="exit"
               className={`md:hidden transition-all duration-500 ${
-                scrolled ? "bg-white/95 backdrop-blur-md" : "bg-black/90"
+                scrolled ? "bg-white/95 backdrop-blur-md" : "bg-white/90"
               } shadow-lg`}
             >
               <nav className="flex flex-col items-start space-y-3 py-6 px-6">
@@ -168,11 +166,9 @@ const Header = () => {
                       onClick={() => setIsMobileMenuOpen(false)}
                       className={`text-base font-medium transition-colors ${
                         isActive(link.path)
-                          ? "text-orange-300"
-                          : scrolled
-                          ? "text-gray-700"
-                          : "text-white"
-                      } hover:text-orange-600`}
+                          ? "text-orange-600"
+                          : "text-gray-700 hover:text-orange-500"
+                      }`}
                     >
                       {link.label}
                     </Link>
@@ -199,9 +195,7 @@ const Header = () => {
       </header>
 
       {/* Add padding so content starts below the header */}
-      <main className="pt-20">
-        {/* Page content goes here */}
-      </main>
+      <main className="pt-20">{/* Page content goes here */}</main>
     </>
   );
 };
